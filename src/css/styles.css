@@ -24,6 +24,9 @@ button[type='submit'] {
 body {
   padding-top: 40px;
   background-color: rgb(69, 64, 64);
+  /* background-image: url(../components/images/bgi.jpg);
+  background-repeat: no-repeat;
+  background-size: cover; */
 }
 
 .load-more {
@@ -43,6 +46,7 @@ body {
   justify-content: center;
 
   gap: 20px;
+  background-color: rgb(69, 64, 64);
 }
 
 .photo-card {
