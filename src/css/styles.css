@@ -23,10 +23,7 @@ button[type='submit'] {
 
 body {
   padding-top: 40px;
-  background-color: rgb(69, 64, 64);
-  /* background-image: url(../components/images/bgi.jpg);
-  background-repeat: no-repeat;
-  background-size: cover; */
+  background-color: rgb(58, 70, 76);
 }
 
 .load-more {
