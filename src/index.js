@@ -6,7 +6,7 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 import { InfiniteScroll } from 'infinite-scroll';
 import './css/styles.css';
 import { ImagesApiService } from './components/api-service';
-// import { createImagesMarkup } from './components/createImagesMarkup';
+import { createImagesMarkup } from './components/createImagesMarkup';
 
 const refs = {
   form: document.querySelector('.search-form'),
@@ -29,7 +29,7 @@ let imagesShown = 0;
 
 function onFormSubmit(e) {
   e.preventDefault();
-  clearMarkUp();
+  clearMarkup();
   refs.loadMoreBtn.classList.add('is-hidden');
 
   imagesShown = 0;
@@ -56,7 +56,7 @@ async function fetchImages() {
       );
       return;
     }
-    createImagesMarkup(hits);
+    refs.gallery.insertAdjacentHTML('beforeend', createImagesMarkup(hits));
 
     if (imagesApiService.page > 2) {
       smoothScroll();
@@ -83,43 +83,6 @@ async function fetchImages() {
   }
 }
 
-function createImagesMarkup(imagesData) {
-  const markup = imagesData
-    .map(
-      ({
-        webformatURL,
-        largeImageURL,
-        tags,
-        likes,
-        views,
-        comments,
-        downloads,
-      }) => {
-        return `<div class="photo-card"><a href="${largeImageURL}">
-  <img src="${webformatURL}" width='350' height='250' alt="${tags}" loading="lazy"/></a>
-  <div class="info">
-    <p class="info-item">
-      <b>Likes <span>${likes}</span> </b>
-    </p>
-    <p class="info-item">
-      <b>Views <span> ${views}</span></b>
-    </p>
-    <p class="info-item">
-      <b>Comments <span>${comments}</span></b>
-    </p>
-    <p class="info-item">
-      <b>Downloads <span>${downloads}</span></b>
-
-    </p>
-  </div>
-</div>`;
-      }
-    )
-    .join(' ');
-
-  refs.gallery.insertAdjacentHTML('beforeend', markup);
-}
-
 function smoothScroll() {
   const { height: cardHeight } = document
     .querySelector('.gallery')
@@ -131,7 +94,7 @@ function smoothScroll() {
   });
 }
 
-function clearMarkUp() {
+function clearMarkup() {
   refs.gallery.innerHTML = ``;
 }
 

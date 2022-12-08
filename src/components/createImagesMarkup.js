@@ -1,5 +1,5 @@
 export function createImagesMarkup(imagesData) {
-  const markup = imagesData
+  return imagesData
     .map(
       ({
         webformatURL,
@@ -31,6 +31,4 @@ export function createImagesMarkup(imagesData) {
       }
     )
     .join(' ');
-
-  refs.gallery.insertAdjacentHTML('beforeend', markup);
 }
