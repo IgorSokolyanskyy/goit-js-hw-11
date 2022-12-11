@@ -7,12 +7,7 @@ import { InfiniteScroll } from 'infinite-scroll';
 import './css/styles.css';
 import { ImagesApiService } from './components/api-service';
 import { createImagesMarkup } from './components/createImagesMarkup';
-
-const refs = {
-  form: document.querySelector('.search-form'),
-  gallery: document.querySelector('.gallery'),
-  loadMoreBtn: document.querySelector('.load-more'),
-};
+import { refs } from './components/refs';
 
 refs.form.addEventListener('submit', onFormSubmit);
 refs.loadMoreBtn.addEventListener('click', onLoadMore);
@@ -29,6 +24,7 @@ let imagesShown = 0;
 
 function onFormSubmit(e) {
   e.preventDefault();
+
   clearMarkup();
   refs.loadMoreBtn.classList.add('is-hidden');
 
@@ -56,6 +52,7 @@ async function fetchImages() {
       );
       return;
     }
+
     refs.gallery.insertAdjacentHTML('beforeend', createImagesMarkup(hits));
 
     if (imagesApiService.page > 2) {
@@ -67,6 +64,7 @@ async function fetchImages() {
         `We found ${totalHits} , buy licence to get more, total found ${total}`
       );
     }
+
     imagesShown += hits.length;
     gallery.refresh();
 
