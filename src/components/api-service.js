@@ -11,7 +11,7 @@ const searchParams = new URLSearchParams({
   per_page: 40,
 });
 
-class ImagesApiService {
+export default class ImagesApiService {
   constructor() {
     this.searchQuery = '';
     this.page = 1;
@@ -45,5 +45,3 @@ class ImagesApiService {
     this.searchQuery = newQuery;
   }
 }
-
-export { ImagesApiService };
