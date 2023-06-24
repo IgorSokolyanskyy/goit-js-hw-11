@@ -1,15 +1,14 @@
-import './css/styles.css';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 // Описан в документации
 import SimpleLightbox from 'simplelightbox';
 // Дополнительный импорт стилей
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
-// import { InfiniteScroll } from 'infinite-scroll';
 import ImagesApiService from './components/api-service';
 
 import imagesCardTpl from './templates/imagesMarkup.hbs';
 import getRefs from './components/refs';
+import './css/styles.css';
 
 const refs = getRefs();
 const imagesApiService = new ImagesApiService();
